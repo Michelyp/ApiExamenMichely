@@ -7,7 +7,6 @@ namespace ApiExamenMichely.Data
     {
         public SeriesContext(DbContextOptions<SeriesContext> options)
                     : base(options) { }
-        public DbSet<Serie> Series { get; set; }
         public DbSet<PersonajeSerie> Personajes { get; set; }
     }
 }

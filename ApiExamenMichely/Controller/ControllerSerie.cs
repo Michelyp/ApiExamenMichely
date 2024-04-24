@@ -25,16 +25,16 @@ namespace ApiExamenMichely.Controller
             return await this.repo.GetPersonajeAsync();
         }
         [HttpGet]
-        [Route("[action]")]
-        public async Task<ActionResult<List<Serie>>> Series()
+        [Route("[action]/{serie}")]
+        public async Task<ActionResult<PersonajeSerie>> PersonajesSerie(string serie)
         {
-            return await this.repo.GetSeriesSinAsync();
+            return await this.repo.FindSerieAsync(serie);
         }
         [HttpGet]
-        [Route("[action]/{serie}")]
-        public async Task<ActionResult<List<PersonajeSerie>>>  PersonajesSerie(string serie)
+        [Route("[action]/serie")]
+        public async Task<ActionResult<List<string>>> PersonajesSerie()
         {
-            return await this.repo.GetPersonajeSerieAsync(serie);
+            return await this.repo.GetPersonajeSerieAsync();
         }
 
         [HttpGet("{id}")]

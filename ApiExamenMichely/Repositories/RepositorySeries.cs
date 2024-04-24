@@ -71,18 +71,16 @@ namespace ApiExamenMichely.Repositories
             this.context.SaveChangesAsync();
         }
 
-        public async Task<List<Serie>> GetSeriesSinAsync()
-        {
-            return await this.context.Series.ToListAsync();
-        }
 
-        public async Task<Serie> FindSerieAsync(string serie)
+        public async Task<PersonajeSerie> FindSerieAsync(string serie)
         {
-            return await this.context.Series.Where(x => x.Nombre == serie).FirstAsync();
+            return await this.context.Personajes.Where(x => x.Serie == serie).FirstOrDefaultAsync();
         }
-        public async Task<List<PersonajeSerie>> GetPersonajeSerieAsync(string serie)
+        public async Task<List<string>> GetPersonajeSerieAsync()
         {
-            return await this.context.Personajes.Where(x => x.Nombre == serie).ToListAsync();
+            var consulta = (from datos in this.context.Personajes
+                            select datos.Serie).Distinct();
+            return await consulta.ToListAsync();
         }
 
 
