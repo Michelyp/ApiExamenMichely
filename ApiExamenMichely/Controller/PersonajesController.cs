@@ -10,11 +10,11 @@ namespace ApiExamenMichely.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ControllerSerie : ControllerBase
+    public class PersonajesController : ControllerBase
     {
         private RepositorySeries repo;
 
-        public ControllerSerie(RepositorySeries repo)
+        public PersonajesController(RepositorySeries repo)
         {
             this.repo = repo;
         }
@@ -45,6 +45,7 @@ namespace ApiExamenMichely.Controller
 
 
         [HttpPost]
+        [Route("[action]")]
         public async Task<ActionResult>
             InsertPersonaje(PersonajeSerie per)
         {
@@ -53,6 +54,7 @@ namespace ApiExamenMichely.Controller
         }
 
         [HttpPut]
+        [Route("[action]")]
         public async Task<ActionResult>
             UpdatePersonaje(PersonajeSerie per)
         {
